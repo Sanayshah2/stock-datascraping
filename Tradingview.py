@@ -66,8 +66,7 @@ while True:
 
         message_text = "Hello\nThis is a mail from your server\n\nBye\n"
 
-        msg = "From: %s\nTo: %s\nSubject: %s\nDate: %s\n\n%s" 
-                % ( from_addr, to_addr, subj, date, message_text )
+        msg = "From: {}\nTo: {}\nSubject: {}\nDate: {}\n\n{}".format(from_addr, to_addr, subj, date, message_text)
         mailserver.sendmail(from_addr,to_addr,msg)
         mailserver.quit()
         continue
