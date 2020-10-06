@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from datetime import datetime 
 import time as t
 import os
+from smtplib import SMTP
 #PATH = 'C:\chromedriver.exe'
 #driver = webdriver.Chrome(PATH)
 chrome_options = webdriver.ChromeOptions()
@@ -50,6 +51,25 @@ while True:
                 timeseries.append(time)
                 initial_price = current_price
     else :
+        mailserver = smtplib.SMTP('smtp.gmail.com',587)
+        # identify ourselves to smtp gmail client
+        mailserver.ehlo()
+        # secure our email with tls encryption
+        mailserver.starttls()
+        # re-identify ourselves as an encrypted connection
+        mailserver.ehlo()
+        mailserver.login('studentgrievance69@gmail.com', 'admin6969')
+        from_addr = "studentgrievance69@gmail.com"
+        to_addr = "sanayshah2@gmail.com"
+        subj = "hello"
+        date = datetime.datetime.now().strftime( "%d/%m/%Y %H:%M" )
+
+        message_text = "Hello\nThis is a mail from your server\n\nBye\n"
+
+        msg = "From: %s\nTo: %s\nSubject: %s\nDate: %s\n\n%s" 
+                % ( from_addr, to_addr, subj, date, message_text )
+        mailserver.sendmail(from_addr,to_addr,msg)
+        mailserver.quit()
         continue
 #df = pd.DataFrame({'Time':timeseries, 'Price':price})
 #df.to_csv('{}_{} {}.csv'.format(name, now.strftime('%b'), now.strftime('%d')), index = False)
