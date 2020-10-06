@@ -50,7 +50,7 @@ while True:
                 timeseries.append(time)
                 initial_price = current_price
     else :
-        break
+        continue
 #df = pd.DataFrame({'Time':timeseries, 'Price':price})
 #df.to_csv('{}_{} {}.csv'.format(name, now.strftime('%b'), now.strftime('%d')), index = False)
 print('Excel sheet prepared and yet to be mailed')
