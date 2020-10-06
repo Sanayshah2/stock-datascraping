@@ -3,9 +3,16 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from datetime import datetime 
 import time as t
+import os
+#PATH = 'C:\chromedriver.exe'
+#driver = webdriver.Chrome(PATH)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 name = input('Enter stock symbol\n')
-PATH = 'C:\chromedriver.exe'
-driver = webdriver.Chrome(PATH)
 driver.get('https://in.tradingview.com/')
 search = driver.find_element_by_class_name('tv-header-search__input')
 search.send_keys('{}'.format(name))
@@ -15,7 +22,7 @@ price = []
 timeseries = []
 while True: 
     now = datetime.now()
-    time = now.strftime("%H:%M:%S"    )
+    time = now.strftime("%H:%M:%S")
     date = now.strftime("%d/%m/%y")
     if time >= '09:15:00' and time < '15:30:00':
         live_price = driver.find_element_by_class_name('tv-symbol-price-quote__value')  
@@ -44,6 +51,7 @@ while True:
                 initial_price = current_price
     else :
         break
-df = pd.DataFrame({'Time':timeseries, 'Price':price})
-df.to_csv('{}_{} {}.csv'.format(name, now.strftime('%b'), now.strftime('%d')), index = False)
+#df = pd.DataFrame({'Time':timeseries, 'Price':price})
+#df.to_csv('{}_{} {}.csv'.format(name, now.strftime('%b'), now.strftime('%d')), index = False)
+print('Excel sheet prepared and yet to be mailed')
 driver.quit()
