@@ -13,10 +13,10 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-name = input('Enter stock symbol\n')
+
 driver.get('https://in.tradingview.com/')
 search = driver.find_element_by_class_name('tv-header-search__input')
-search.send_keys('{}'.format(name))
+search.send_keys('ROUTE')
 search.send_keys(Keys.RETURN)
 t.sleep(3)
 price = []
