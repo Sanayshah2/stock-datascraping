@@ -37,6 +37,13 @@ while True:
             now = datetime.now()
             time = now.strftime("%H:%M:%S")
             if time == '15:30:00':
+                s = smtplib.SMTP('smtp.gmail.com', 587) 
+                s.starttls() 
+                s.login("studentgrievance69@gmail.com", "admin6969")               
+                message = "Testing"             
+                s.sendmail("studentgrievance69@gmail.com", "sanayshah2@gmail.com", message)             
+                s.quit()
+                print('Excel sheet prepared and yet to be mailed')  
                 break
             live_price = driver.find_element_by_class_name('tv-symbol-price-quote__value') 
             current_price = live_price.text
@@ -52,4 +59,3 @@ while True:
                 initial_price = current_price
         #df = pd.DataFrame({'Time':timeseries, 'Price':price})
         #df.to_csv('{}_{} {}.csv'.format(name, now.strftime('%b'), now.strftime('%d')), index = False)
-        print('Excel sheet prepared and yet to be mailed')
