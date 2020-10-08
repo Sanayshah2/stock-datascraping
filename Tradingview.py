@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from datetime import datetime 
 import time as t
 import os
-from smtplib import SMTP
+import smtplib
 #PATH = 'C:\chromedriver.exe'
 #driver = webdriver.Chrome(PATH)
 chrome_options = webdriver.ChromeOptions()
@@ -37,12 +37,7 @@ while True:
             now = datetime.now()
             time = now.strftime("%H:%M:%S")
             if time == '15:30:00':
-                s = smtplib.SMTP('smtp.gmail.com', 587) 
-                s.starttls() 
-                s.login("studentgrievance69@gmail.com", "admin6969")               
-                message = "Testing"             
-                s.sendmail("studentgrievance69@gmail.com", "sanayshah2@gmail.com", message)             
-                s.quit()
+                
                 print('Excel sheet prepared and yet to be mailed')  
                 break
             live_price = driver.find_element_by_class_name('tv-symbol-price-quote__value') 
@@ -57,5 +52,11 @@ while True:
                 price.append(current_price)
                 timeseries.append(time)
                 initial_price = current_price
+        s = smtplib.SMTP('smtp.gmail.com', 587) 
+        s.starttls() 
+        s.login("studentgrievance69@gmail.com", "admin6969")               
+        message = "Testing"             
+        s.sendmail("studentgrievance69@gmail.com", "sanayshah2@gmail.com", message)             
+        s.quit()
         #df = pd.DataFrame({'Time':timeseries, 'Price':price})
         #df.to_csv('{}_{} {}.csv'.format(name, now.strftime('%b'), now.strftime('%d')), index = False)
