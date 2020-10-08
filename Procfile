@@ -1,1 +1,1 @@
-web: python Tradingview.py
+worker: python Tradingview.py
