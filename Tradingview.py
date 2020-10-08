@@ -52,11 +52,11 @@ while True:
                 price.append(current_price)
                 timeseries.append(time)
                 initial_price = current_price
-        s = smtplib.SMTP('smtp.gmail.com', 587) 
-        s.starttls() 
-        s.login("studentgrievance69@gmail.com", "admin6969")               
-        message = "Testing"             
-        s.sendmail("studentgrievance69@gmail.com", "sanayshah2@gmail.com", message)             
-        s.quit()
+    s = smtplib.SMTP('smtp.gmail.com', 587) 
+    s.starttls() 
+    s.login("studentgrievance69@gmail.com", "admin6969")               
+    message = "Testing"             
+    s.sendmail("studentgrievance69@gmail.com", "sanayshah2@gmail.com", message)             
+    s.quit()
         #df = pd.DataFrame({'Time':timeseries, 'Price':price})
         #df.to_csv('{}_{} {}.csv'.format(name, now.strftime('%b'), now.strftime('%d')), index = False)
