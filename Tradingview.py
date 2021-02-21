@@ -7,12 +7,11 @@ import os
 import smtplib
 stock = input('Enter the stock symbol\n')
 PATH = 'chromedriver.exe'
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome(PATH, options=chrome_options)
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--disable-dev-shm-usage")
+# chrome_options.add_argument("--no-sandbox")
+driver = webdriver.Chrome(PATH)
 driver.get('https://in.tradingview.com/')
 search = driver.find_element_by_class_name('tv-header-search__input')
 search.send_keys(stock)
